@@ -17,6 +17,13 @@ primary_region = "iad"
     interval = "15s"
     timeout = "2s"
     grace_period = "5s"
+  [checks.backend_health]
+    grace_period = "30s"
+    interval = "15s"
+    method = "get"
+    path = "/health"
+    timeout = "10s"
+    type = "http"
 
 [processes]
   app = "node app.js"
