@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: commit messages
         env:
-          COMMIITS: ${{join(github.event.commits.*.message)}}
-        run: echo "$COMMIITS"
+          COMMITS: ${{join(github.event.commits.*.message)}}
+        run: echo "$COMMITS"
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - uses: actions/setup-node@v3
