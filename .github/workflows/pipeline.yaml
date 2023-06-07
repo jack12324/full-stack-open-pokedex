@@ -39,4 +39,4 @@ jobs:
         run: flyctl deploy -i `flyctl releases -j | jq ".[1].ImageRef" -r` --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-        if: (steps.deploy.outcome == 'failure)
+        if: (steps.deploy.outcome == 'failure')
