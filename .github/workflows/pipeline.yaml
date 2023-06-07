@@ -35,7 +35,7 @@ jobs:
           wait-on: http://localhost:5000
       - name: commit messages
         env:
-          TEMP: ${{contains(join(github.event.commits.*.message))}}
+          TEMP: ${{join(github.event.commits.*.message)}}
         run: echo "$TEMP"
       - name: Deploy
         id: deploy
