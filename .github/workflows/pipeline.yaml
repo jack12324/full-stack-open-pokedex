@@ -34,9 +34,10 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
       - name: commit messages
-        env:
-          TEMP: ${{join(github.event.commits.*.message)}}
-        run: echo "$TEMP"
+        run: |
+          commits=${{join(github.event.commits.*.message)}}
+          echo $commits
+          echo "hi"
       - name: Deploy
         id: deploy
         run: flyctl deploy --remote-only
