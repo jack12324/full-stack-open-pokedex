@@ -1,0 +1,29 @@
+# fly.toml file generated for fso-poke on 2023-06-06T18:08:14-04:00
+
+app = "fso-poke"
+primary_region = "iad"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  processes = ["app"]
+
+[checks]
+  [checks.alive]
+    type = "tcp"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"
+
+[processes]
+  app = "node app.js"
+
+[deploy]
+  release_command = "npm run build"
+
+[build]
+  [build.args]
+    NODE_VERSION = "16.20.0"
