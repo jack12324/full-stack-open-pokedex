@@ -1,0 +1,11 @@
+name: Rollback
+
+on: workflow_dispatch
+
+jobs:
+  rollback:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Rollback
+        run: fly deploy -i `fly releases -j | jq ".[1].ImageRef" -r`
