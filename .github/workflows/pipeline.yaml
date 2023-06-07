@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - 'master'
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
   workflow_dispatch:
 
 
@@ -35,6 +38,7 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        if: (github.event.name == 'push')
       - name: Rollback
         run: flyctl deploy -i `flyctl releases -j | jq ".[1].ImageRef" -r` --remote-only
         env:
