@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Rollback
-        run: fly deploy -i `fly releases -j | jq ".[1].ImageRef" -r`
+        run: flyctl deploy -i `flyctl releases -j | jq ".[1].ImageRef" -r`
