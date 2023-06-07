@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  rollback:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Rollback
+        run: |
+          echo "hi"
