@@ -48,6 +48,7 @@ jobs:
         if: always()
         uses: sarisia/actions-status-discord@v1
         with:
+          url: https://github.com/jack12324/full-stack-open-pokedex/actions/workflows/pipeline.yaml
           webhook: ${{secrets.DISCORD_WEBHOOK}}
   tag_release:
     needs: [simple_deployment_pipeline]
